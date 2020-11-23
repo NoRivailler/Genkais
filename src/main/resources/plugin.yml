@@ -1,0 +1,4 @@
+name: Genkai
+version: ${project.version}
+main: com.moon.degust.genkai.Genkai
+authors: [ deGust ]
