@@ -1,5 +1,6 @@
 package com.moon.degust.genkai.objects;
 
+import com.moon.degust.genkai.builder.items.ItemBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.bukkit.Material;
@@ -24,5 +25,9 @@ public class Element {
     private List<ItemStack> itemsOnChoose;
 
 
+
+    public ItemStack getItem() {
+        return new ItemBuilder(materialBase).setDisplayName(name).setLore(lore).build();
+    }
 
 }

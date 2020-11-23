@@ -2,6 +2,7 @@ package com.moon.degust.genkai.inventories;
 
 import com.moon.degust.genkai.Genkai;
 import com.moon.degust.genkai.builder.items.ItemBuilder;
+import com.moon.degust.genkai.objects.Element;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -17,6 +18,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class GenkaiMenuSelect implements Listener {
@@ -24,74 +26,15 @@ public class GenkaiMenuSelect implements Listener {
     private static final Genkai PLUGIN = Genkai.getInstance();
 
     public void open(Player p) {
-
-        // INVENTORY
         Inventory inv = Bukkit.createInventory(null, 4 * 9, "Kekkei Genkai");
 
-        ItemStack mokutonItem = new ItemBuilder(Material.LOG)
-                .setDisplayName("§aMokuton")
-                .setLore(Arrays.asList(
-                        "§7- §fÉ uma alteração de natureza",
-                        " §fque combina terra e água para criar madeira."
-                ))
-                .build();
-        inv.setItem(11, mokutonItem);
+        Collection<Element> elements = PLUGIN.getElementManager().getElements();
 
-
-        ItemStack bakutonItem = new ItemBuilder(Material.LOG)
-                .setDisplayName("§aBakuton")
-                .setLore(Arrays.asList(
-                        "§7- §fEsta natureza da ao seu portador",
-                        " §fa capacidade de utilizar o chakra explosivo em combate."
-                ))
-                .build();
-        inv.setItem(21, bakutonItem);
-
-
-        ItemStack shotonItem = new ItemBuilder(Material.LOG)
-                .setDisplayName("§aShoton")
-                .setLore(Arrays.asList(
-                        "§7- §fÉ um tipo de alteração de natureza",
-                        " §fque permite ao usuário criar cristal",
-                        " §fou manipular cristais já existentes."
-                ))
-                .build();
-        inv.setItem(13, shotonItem);
-
-
-        ItemStack hyotonItem = new ItemBuilder(Material.LOG)
-                .setDisplayName("§aHyoton")
-                .setLore(Arrays.asList(
-                        "§7- §fHyoton da ao seu portador a",
-                        " §fhabilidade de manipular o gelo",
-                        " §fou manipular cristais já existentes."
-                ))
-                .build();
-        inv.setItem(23, hyotonItem);
-
-
-        ItemStack rantomItem = new ItemBuilder(Material.LOG)
-                .setDisplayName("§aRanton")
-                .setLore(Arrays.asList(
-                        "§7- §fÉ uma avançada natureza que cria feixes de energia",
-                        " §fque podem ser guiados em direção ao inimigo."
-                ))
-                .build();
-        inv.setItem(15, rantomItem);
-
-
-        ItemStack warningItem = new ItemBuilder(Material.LOG)
-                .setDisplayName("§c§lAVISO!")
-                .setLore(Arrays.asList(
-                        "§7? §fVocê pode §lunicamente §fe §lapenas ",
-                        " §fescolher uma kekkei genkai."
-                ))
-                .build();
-        inv.setItem(27, warningItem);
-
+        for (Element element : elements) {
+            inv.setItem(element.getSlotBase(), element.getItem());
+        }
 
         p.openInventory(inv);
-
     }
 
     @EventHandler
