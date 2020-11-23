@@ -1,6 +1,7 @@
 package com.moon.degust.genkai.inventories;
 
 import com.moon.degust.genkai.Genkai;
+import com.moon.degust.genkai.builder.items.ItemBuilder;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -15,76 +16,82 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class GenkaiMenuSelect implements Listener {
 
-    private static Genkai PLUGIN = Genkai.getInstance();
+    private static final Genkai PLUGIN = Genkai.getInstance();
 
     public void open(Player p) {
 
         // INVENTORY
         Inventory inv = Bukkit.createInventory(null, 4 * 9, "Kekkei Genkai");
 
-            final ItemStack mokuton = new ItemStack(Material.LOG, 1);
-            final ItemMeta mokutonm = mokuton.getItemMeta();
-            mokutonm.setDisplayName("§aMokuton");
-            ArrayList<String> lore1 = new ArrayList<String>();
-            lore1.add("§7- §fÉ uma alteração de natureza");
-            lore1.add(" §fque combina terra e água para criar madeira.");
-            mokutonm.setLore(lore1);
-            mokuton.setItemMeta(mokutonm);
-            inv.setItem(11, mokuton);
+        ItemStack mokutonItem = new ItemBuilder(Material.LOG)
+                .setDisplayName("§aMokuton")
+                .setLore(Arrays.asList(
+                        "§7- §fÉ uma alteração de natureza",
+                        " §fque combina terra e água para criar madeira."
+                ))
+                .build();
+        inv.setItem(11, mokutonItem);
 
-            final ItemStack bakuton = new ItemStack(Material.MAGMA_CREAM, 1);
-            final ItemMeta bakutonm = bakuton.getItemMeta();
-            bakutonm.setDisplayName("§aBakuton");
-            ArrayList<String> lore2 = new ArrayList<String>();
-            lore2.add("§7- §fEsta natureza da ao seu portador");
-            lore2.add(" §fa capacidade de utilizar o chakra explosivo em combate.");
-            bakutonm.setLore(lore2);
-            bakuton.setItemMeta(bakutonm);
-            inv.setItem(21, bakuton);
 
-            final ItemStack shoton = new ItemStack(Material.NETHER_STAR, 1);
-            final ItemMeta shotonm = shoton.getItemMeta();
-            shotonm.setDisplayName("§aShoton");
-            ArrayList<String> lore3 = new ArrayList<String>();
-            lore3.add("§7- §fÉ um tipo de alteração de natureza");
-            lore3.add(" §fque permite ao usuário criar cristal");
-            lore3.add(" §fou manipular cristais já existentes.");
-            shotonm.setLore(lore3);
-            shoton.setItemMeta(shotonm);
-            inv.setItem(13, shoton);
 
-            final ItemStack hyoton = new ItemStack(Material.PACKED_ICE, 1);
-            final ItemMeta hyotonm = hyoton.getItemMeta();
-            hyotonm.setDisplayName("§aHyoton");
-            ArrayList<String> lore4 = new ArrayList<String>();
-            lore4.add("§7- §fHyoton da ao seu portador a");
-            lore4.add(" §fhabilidade de manipular o gelo");
-            hyotonm.setLore(lore4);
-            hyoton.setItemMeta(hyotonm);
-            inv.setItem(23, hyoton);
+        ItemStack bakutonItem = new ItemBuilder(Material.LOG)
+                .setDisplayName("§aBakuton")
+                .setLore(Arrays.asList(
+                        "§7- §fEsta natureza da ao seu portador",
+                        " §fa capacidade de utilizar o chakra explosivo em combate."
+                ))
+                .build();
+        inv.setItem(21, bakutonItem);
 
-            final ItemStack ranton = new ItemStack(Material.EYE_OF_ENDER, 1);
-            final ItemMeta rantonm = ranton.getItemMeta();
-            rantonm.setDisplayName("§aRanton");
-            ArrayList<String> lore5 = new ArrayList<String>();
-            lore5.add("§7- §fÉ uma avançada natureza que cria feixes de energia");
-            lore5.add(" §fque podem ser guiados em direção ao inimigo.");
-            rantonm.setLore(lore5);
-            ranton.setItemMeta(rantonm);
-            inv.setItem(15, ranton);
 
-            final ItemStack aviso = new ItemStack(Material.SIGN, 1);
-            final ItemMeta avisom = ranton.getItemMeta();
-            avisom.setDisplayName("§c§lAVISO!");
-            ArrayList<String> lore6 = new ArrayList<String>();
-            lore6.add("§7? §fVocê pode §lunicamente §fe §lapenas ");
-            lore6.add(" §fescolher uma kekkei genkai.");
-            avisom.setLore(lore6);
-            aviso.setItemMeta(avisom);
-            inv.setItem(27, aviso);
+
+        ItemStack shotonItem = new ItemBuilder(Material.LOG)
+                .setDisplayName("§aShoton")
+                .setLore(Arrays.asList(
+                        "§7- §fÉ um tipo de alteração de natureza",
+                        " §fque permite ao usuário criar cristal",
+                        " §fou manipular cristais já existentes."
+                ))
+                .build();
+        inv.setItem(13, shotonItem);
+
+
+        ItemStack hyotonItem = new ItemBuilder(Material.LOG)
+                .setDisplayName("§aHyoton")
+                .setLore(Arrays.asList(
+                        "§7- §fHyoton da ao seu portador a",
+                        " §fhabilidade de manipular o gelo",
+                        " §fou manipular cristais já existentes."
+                ))
+                .build();
+        inv.setItem(23, hyotonItem);
+
+
+
+        ItemStack rantomItem = new ItemBuilder(Material.LOG)
+                .setDisplayName("§aRanton")
+                .setLore(Arrays.asList(
+                        "§7- §fÉ uma avançada natureza que cria feixes de energia",
+                        " §fque podem ser guiados em direção ao inimigo."
+                ))
+                .build();
+        inv.setItem(15, rantomItem);
+
+
+        ItemStack warningItem = new ItemBuilder(Material.LOG)
+                .setDisplayName("§c§lAVISO!")
+                .setLore(Arrays.asList(
+                        "§7? §fVocê pode §lunicamente §fe §lapenas ",
+                        " §fescolher uma kekkei genkai."
+                ))
+                .build();
+        inv.setItem(27, warningItem);
+
 
         p.openInventory(inv);
 
@@ -93,13 +100,17 @@ public class GenkaiMenuSelect implements Listener {
     @EventHandler
     public void onPlayerClickInventory(final InventoryClickEvent e) {
 
-        final Player p = (Player) e.getWhoClicked();
+        Player p = (Player) e.getWhoClicked();
+        ItemStack item = e.getCurrentItem();
 
-        if (e.getInventory().getTitle().equalsIgnoreCase("Kekkei Genkai") && e.getCurrentItem() != null
-                && e.getCurrentItem().getTypeId() != 0) {
+        if (!e.getInventory().getTitle().equalsIgnoreCase("Kekkei Genkai")) return;
+
+
+        if (e.getInventory().getTitle().equalsIgnoreCase("Kekkei Genkai") && item != null
+                && item.getTypeId() != 0) {
             e.setCancelled(true);
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§aMokuton")) {
+            if (item.getItemMeta().getDisplayName().equals("§aMokuton")) {
                 p.closeInventory();
                 p.sendMessage(" ");
                 p.sendMessage("§aParabéns! Você selecionou sua §lKekkei Genkai§a.");
@@ -110,7 +121,7 @@ public class GenkaiMenuSelect implements Listener {
 
                 ConfigurationSection cfg = PLUGIN.getConfig().getConfigurationSection("Mokuton");
 
-                for(String item : cfg.getKeys(false)) {
+                for (String item : cfg.getKeys(false)) {
 
                     ItemStack a1 = new ItemStack(cfg.getInt(item + ".item01" + ".id"), 1, (short) 0);
                     ItemMeta a1m = a1.getItemMeta();
@@ -134,7 +145,7 @@ public class GenkaiMenuSelect implements Listener {
                 return;
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§aBakuton")) {
+            if (item.getItemMeta().getDisplayName().equals("§aBakuton")) {
                 p.closeInventory();
                 p.sendMessage(" ");
                 p.sendMessage("§aParabéns! Você selecionou sua §lKekkei Genkai§a.");
@@ -145,7 +156,7 @@ public class GenkaiMenuSelect implements Listener {
 
                 ConfigurationSection cfg = PLUGIN.getConfig().getConfigurationSection("Bakuton");
 
-                for(String item : cfg.getKeys(false)) {
+                for (String item : cfg.getKeys(false)) {
 
                     ItemStack a1 = new ItemStack(cfg.getInt(item + "item01.id"), 1, (short) 0);
                     ItemMeta a1m = a1.getItemMeta();
@@ -169,7 +180,7 @@ public class GenkaiMenuSelect implements Listener {
                 return;
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§aShoton")) {
+            if (item.getItemMeta().getDisplayName().equals("§aShoton")) {
                 p.closeInventory();
                 p.sendMessage(" ");
                 p.sendMessage("§aParabéns! Você selecionou sua §lKekkei Genkai§a.");
@@ -180,7 +191,7 @@ public class GenkaiMenuSelect implements Listener {
 
                 ConfigurationSection cfg = PLUGIN.getConfig().getConfigurationSection("Shoton");
 
-                for(String item : cfg.getKeys(false)) {
+                for (String item : cfg.getKeys(false)) {
 
                     ItemStack a1 = new ItemStack(cfg.getInt(item + "item01.id"), 1, (short) 0);
                     ItemMeta a1m = a1.getItemMeta();
@@ -204,7 +215,7 @@ public class GenkaiMenuSelect implements Listener {
                 return;
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§aHyoton")) {
+            if (item.getItemMeta().getDisplayName().equals("§aHyoton")) {
                 p.closeInventory();
                 p.sendMessage(" ");
                 p.sendMessage("§aParabéns! Você selecionou sua §lKekkei Genkai§a.");
@@ -215,7 +226,7 @@ public class GenkaiMenuSelect implements Listener {
 
                 ConfigurationSection cfg = PLUGIN.getConfig().getConfigurationSection("Hyoton");
 
-                for(String item : cfg.getKeys(false)) {
+                for (String item : cfg.getKeys(false)) {
 
                     ItemStack a1 = new ItemStack(cfg.getInt(item + "item01.id"), 1, (short) 0);
                     ItemMeta a1m = a1.getItemMeta();
@@ -239,7 +250,7 @@ public class GenkaiMenuSelect implements Listener {
                 return;
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§aRanton")) {
+            if (item.getItemMeta().getDisplayName().equals("§aRanton")) {
                 p.closeInventory();
                 p.sendMessage(" ");
                 p.sendMessage("§aParabéns! Você selecionou sua §lKekkei Genkai§a.");
@@ -250,7 +261,7 @@ public class GenkaiMenuSelect implements Listener {
 
                 ConfigurationSection cfg = PLUGIN.getConfig().getConfigurationSection("Ranton");
 
-                for(String item : cfg.getKeys(false)) {
+                for (String item : cfg.getKeys(false)) {
 
                     ItemStack a1 = new ItemStack(cfg.getInt(item + "item01.id"), 1, (short) 0);
                     ItemMeta a1m = a1.getItemMeta();
