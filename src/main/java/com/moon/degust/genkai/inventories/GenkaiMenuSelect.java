@@ -1,4 +1,4 @@
-package com.moon.degust.genkai.menus;
+package com.moon.degust.genkai.inventories;
 
 import com.moon.degust.genkai.Genkai;
 import org.bukkit.Sound;

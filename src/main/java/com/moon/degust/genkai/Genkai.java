@@ -1,6 +1,6 @@
 package com.moon.degust.genkai;
 
-import com.moon.degust.genkai.menus.GenkaiMenuSelect;
+import com.moon.degust.genkai.inventories.GenkaiMenuSelect;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

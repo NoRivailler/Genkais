@@ -1,6 +1,6 @@
-package com.moon.degust.genkai.comandos;
+package com.moon.degust.genkai.commands;
 
-import com.moon.degust.genkai.menus.GenkaiMenuSelect;
+import com.moon.degust.genkai.inventories.GenkaiMenuSelect;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
