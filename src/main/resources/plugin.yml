@@ -1,4 +1,6 @@
-name: Genkai
-version: ${project.version}
+name: MoonGenkais
+version: 1.0
 main: com.moon.degust.genkai.Genkai
-authors: [ deGust ]
+author: deGust
+commands:
+  genkai:
