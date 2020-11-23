@@ -1,0 +1,6 @@
+name: MoonGenkais
+version: 1.0
+main: com.moon.degust.Main
+author: deGust
+commands:
+  genkai:
